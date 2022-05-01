@@ -14,10 +14,14 @@ import java.util.UUID;
 @Entity
 public class Category extends BaseEntity {
 
-    public Category(UUID categoryId, String categoryName) {
+    public Category(UUID categoryId, String categoryName, String upc) {
         super(categoryId);
         this.categoryName = categoryName;
+        this.upc = upc;
     }
+
+    @Column(name="upc", unique = true)
+    private String upc;
 
     @Column(name="name")
     private String categoryName;

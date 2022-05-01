@@ -1,11 +1,11 @@
 package mb.equipme_item_service.domain;
 
-import com.sun.istack.NotNull;
 import lombok.*;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Data
@@ -24,6 +24,9 @@ public class Item extends BaseEntity {
         this.itemImage = itemImage;
         this.dayRentPrice = dayRentPrice;
     }
+
+    @Column(name="upc", unique = true)
+    private String upc;
 
     @Column(name="name")
     private String itemName;
@@ -47,4 +50,7 @@ public class Item extends BaseEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
+
+    @NotNull
+    private UUID userId;
 }

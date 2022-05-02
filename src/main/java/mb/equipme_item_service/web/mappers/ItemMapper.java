@@ -23,7 +23,6 @@ public interface ItemMapper {
     })
     ItemDto itemToItemDto(Item item);
 
-
     @Mappings({
             @Mapping(target="id", source="dto.id"),
             @Mapping(target="upc", source="dto.upc"),

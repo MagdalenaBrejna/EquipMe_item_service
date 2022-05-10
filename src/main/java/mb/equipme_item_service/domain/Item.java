@@ -13,6 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "items")
 public class Item extends BaseEntity {
 
     public Item(UUID itemId, String itemName, String itemBrand, String itemModel, String itemDescription, byte[] itemImage, Double dayRentPrice) {
@@ -52,5 +53,6 @@ public class Item extends BaseEntity {
     private Category category;
 
     @NotNull
+    @Column(name="owner_id")
     private UUID userId;
 }

@@ -12,6 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "categories")
 public class Category extends BaseEntity {
 
     public Category(UUID categoryId, String categoryName, String upc) {

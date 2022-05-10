@@ -2,11 +2,9 @@ package mb.equipme_item_service.web.mappers;
 
 import mb.equipme_item_service.domain.Item;
 import mb.equipme_item_service.web.model.ItemDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
+import org.mapstruct.*;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ItemMapper {
 
     @Mappings({
@@ -36,5 +34,8 @@ public interface ItemMapper {
             @Mapping(target="userId", source="dto.userId")
     })
     Item itemDtoToItem(ItemDto dto);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateItemFromDto(ItemDto dto, @MappingTarget Item entity);
 }
 
